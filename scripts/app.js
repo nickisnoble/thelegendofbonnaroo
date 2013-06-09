@@ -17,44 +17,50 @@ $(document).ready(function(){
         Parse.User.logOut();
         window.location = '/login';
     });
-
-    $('#sign-up').click(function(){
-        $('#sign-up').attr("disabled", "disabled");
-        signUp(
-            $('#username').text(),
-            $('#password').text(),
-            $('#email').text(),
-            {
-                success: function(user) {
-                    window.location = '/current.html';
-                    $('#sign-up').removeAttr("disabled");
-                },
-                error: function(user, error) {
-                    alert(error.message);
-                    $('#sign-up').removeAttr("disabled");
-                }
-            }
-        )
-    });
-
-    $('#login').click(function(){
-        $('#login').attr("disabled", "disabled");
-        login(
-            $('#username').text(),
-            $('#password').text(),
-            {
-                success: function(user) {
-                    window.location = '/current.html';
-                    $('#login').removeAttr("disabled");
-                },
-                error: function(user, error) {
-                    alert(error.message);
-                    $('#login').removeAttr("disabled");
-                }
-            }
-        )
-    });
 });
+
+
+function submitSignUpForm(){
+    $('#sign-up').attr("disabled", "disabled");
+    signUp(
+        $('#inputUsername').val(),
+        $('#inputPassword').val(),
+        $('#inputEmail').val(),
+        {
+            success: function(user) {
+                window.location = '/current.html';
+                $('#inputSubmit').removeAttr("disabled");
+            },
+            error: function(user, error) {
+                alert(error.message);
+                $('#inputSubmit').removeAttr("disabled");
+            }
+        }
+    );
+
+    return false;
+}
+
+
+function submitLoginForm(){
+    $('#inputLogin').attr("disabled", "disabled");
+    login(
+        $('#inputUsername').val(),
+        $('#inputPassword').val(),
+        {
+            success: function(user) {
+                window.location = '/current.html';
+                $('#inputLogin').removeAttr("disabled");
+            },
+            error: function(user, error) {
+                alert(error.message);
+                $('#inputLogin').removeAttr("disabled");
+            }
+        }
+    );
+
+    return false;
+}
 
 function signUp(username, password, email, callback){
     var user = new Parse.User();
