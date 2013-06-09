@@ -28,7 +28,7 @@ function submitSignUpForm(){
         $('#inputEmail').val(),
         {
             success: function(user) {
-                window.location = '/current.html';
+                window.location = '/quest1.html';
                 $('#inputSubmit').removeAttr("disabled");
             },
             error: function(user, error) {
@@ -67,7 +67,7 @@ function signUp(username, password, email, callback){
     user.set('username', username);
     user.set('password', password);
     user.set('email', email);
-    user.set('level', 0);
+    user.set('level', 1);
     user.signUp(null, callback);
 }
 
