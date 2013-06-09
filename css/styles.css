@@ -4,5 +4,9 @@
 }
 body {
   color: #ccc;
+  background: #aaccff;
   font-family: 'ProximaNova', sans-serif;
+}
+#login {
+  background: #aaccff;
 }
