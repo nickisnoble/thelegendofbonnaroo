@@ -1,5 +1,10 @@
 Parse.initialize('925qu3OQV7NK7DksVYwJSIdVvr8x5ZtLzEU5jg1i', 'yHldFlVEPsBCi6VY7WQbqEaGzuOun8ziZRHj4tvY');
 var currentUser = Parse.User.current();
+
+if(currentUser.get('level') < 1){
+    currentUser.set('level', 1);
+}
+
 var maxLevel = 5;
 
 
@@ -47,6 +52,11 @@ function submitLoginForm(){
         $('#inputPassword').val(),
         {
             success: function(user) {
+
+                if(user.get('level') < 1){
+                    user.set('level', 1);
+                }
+
                 window.location = 'quest' + user.get('level') + '.html';
                 $('#inputLogin').removeAttr("disabled");
             },
