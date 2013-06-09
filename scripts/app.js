@@ -13,7 +13,7 @@ $(document).ready(function(){
 
     $('#sign-out').click(function(){
         Parse.User.logOut();
-        window.location = '/login';
+        window.location = 'login.html';
     });
 });
 
@@ -26,7 +26,7 @@ function submitSignUpForm(){
         $('#inputEmail').val(),
         {
             success: function(user) {
-                window.location = '/quest1.html';
+                window.location = 'quest1.html';
                 $('#inputSubmit').removeAttr("disabled");
             },
             error: function(user, error) {
@@ -47,7 +47,7 @@ function submitLoginForm(){
         $('#inputPassword').val(),
         {
             success: function(user) {
-                window.location = '/quest' + user.get('level') + '.html';
+                window.location = 'quest' + user.get('level') + '.html';
                 $('#inputLogin').removeAttr("disabled");
             },
             error: function(user, error) {
@@ -79,7 +79,7 @@ function levelUp(){
         currentUser.save();
 
         if(currentUser.get('level') <= maxLevel){
-            window.location = '/quest' + currentUser.get('level') + '.html';
+            window.location = 'quest' + currentUser.get('level') + '.html';
         }else{
             window.location = 'login.html';
         }
