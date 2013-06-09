@@ -39,12 +39,44 @@ function signUp(username, password, email){
 }
 
 
-function Login(username, password){
+function login(username, password){
     Parse.User.logIn(username, password, {
         success: function(user) {
             window.location = '/';
         },
         error: function(user, error) {
+            alert(error.message);
+        }
+    });
+}
+
+
+function getUserByUsername(username){
+    var query = new Parse.Query(Parse.User);
+    query.equalTo('username', username);
+    query.find({
+        success: function(user) {
+            username = user[0].get('username');
+        },
+        error: function(error) {
+            alert(error.message);
+        }
+    });
+}
+
+
+function getAllUsers(){
+    var query = new Parse.Query(Parse.User);
+    query.find({
+        success: function(results) {
+            users = [];
+            for(var i = 0; i < results.length; i++){
+                var user = {};
+                user.username = results[i].get('username');
+                users.push(user);
+            }
+        },
+        error: function(error) {
             alert(error.message);
         }
     });
