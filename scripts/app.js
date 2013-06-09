@@ -1,10 +1,5 @@
 Parse.initialize('925qu3OQV7NK7DksVYwJSIdVvr8x5ZtLzEU5jg1i', 'yHldFlVEPsBCi6VY7WQbqEaGzuOun8ziZRHj4tvY');
 var currentUser = Parse.User.current();
-
-if(currentUser.get('level') < 1){
-    currentUser.set('level', 1);
-}
-
 var maxLevel = 5;
 
 
