@@ -25,3 +25,7 @@ body {
   background-image: linear-gradient(top, #00b8e0, #c5d348);
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#00b8e0', EndColorStr='#c5d348');
 }
+
+#signed-in{
+    display: none;
+}

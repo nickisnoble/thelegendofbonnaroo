@@ -6,11 +6,9 @@ var maxLevel = 5;
 $(document).ready(function(){
 
     if (currentUser) {
-        $('.loggedOut').hide();
-        $('.loggedIn').show();
-    } else {
-        $('.loggedOut').show();
-        $('.loggedIn').hide();
+        $('#signed-in').show();
+        $('#sign-out').show();
+        $('#signed-in').html('Welcome ' + currentUser.get('username'));
     }
 
     $('#sign-out').click(function(){
