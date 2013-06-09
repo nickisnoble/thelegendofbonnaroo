@@ -7,8 +7,8 @@ $(document).ready(function(){
 
     if (currentUser) {
         $('#signed-in').show();
-        $('#sign-out').show();
         $('#signed-in').html('Welcome ' + currentUser.get('username'));
+        $('#sign-out').show();
     }
 
     $('#sign-out').click(function(){
@@ -47,7 +47,7 @@ function submitLoginForm(){
         $('#inputPassword').val(),
         {
             success: function(user) {
-                window.location = '/current.html';
+                window.location = '/quest' + user.get('level') + '.html';
                 $('#inputLogin').removeAttr("disabled");
             },
             error: function(user, error) {
@@ -77,7 +77,12 @@ function levelUp(){
     if(currentUser){
         currentUser.set('level', currentUser.get('level') + 1);
         currentUser.save();
-        window.location = '/current.html';
+
+        if(currentUser.get('level') <= maxLevel){
+            window.location = '/quest' + currentUser.get('level') + '.html';
+        }else{
+            window.location = 'login.html';
+        }
     }
 }
 
